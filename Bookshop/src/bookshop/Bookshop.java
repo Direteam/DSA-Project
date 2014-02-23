@@ -5,7 +5,6 @@
  */
 
 package bookshop;
-
 /**
  *
  * @author Kapthura
@@ -18,7 +17,5 @@ public class Bookshop {
     public static void main(String[] args) {
         
         System.out.println("himal");
-         
-    
-}
+    }
 }
