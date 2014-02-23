@@ -1,14 +1,10 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-package bookshop;
-
 /**
  *
  * @author A.M.D.Wijerathna
  * @date 02-23-2014
  */
+package bookshop;
+
 public interface IBinaryNode
 {
     	//Get element
