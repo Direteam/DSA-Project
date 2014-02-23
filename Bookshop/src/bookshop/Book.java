@@ -7,6 +7,7 @@ package bookshop;
 /**
  *
  * @author A.M.D.Wijerathna
+ * @date 02-23-2014
  */
 class Book implements IBinaryNode {
 
@@ -14,6 +15,9 @@ class Book implements IBinaryNode {
 	private String bookTitle, authorName, authorSurname;
 	private int isbn;
 	
+        //Left Child and Right Child
+        Book leftChild, rightChild;
+        
 	//Book class Properties
 	public String getBookTitle() {
 		return bookTitle;
@@ -52,41 +56,52 @@ class Book implements IBinaryNode {
 	{
 		bookTitle = authorName = authorSurname = null;
 		isbn = 0;
+                leftChild = null;
+                rightChild = null;
 	}
         
     @Override
     public Book element() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return this;
     }
 
     @Override
     public void setElement(Book newBook) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+      this.authorName = newBook.authorName;
+      this.authorSurname = newBook.authorSurname;
+      this.bookTitle = newBook.bookTitle;
+      this.isbn = newBook.isbn;
     }
 
     @Override
     public Book left() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return leftChild;
     }
 
     @Override
     public boolean hsaLeft() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(leftChild!=null)
+            return true;
+        else
+            return false;
     }
 
     @Override
     public Book right() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return rightChild;
     }
 
     @Override
     public boolean hasRight() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        if(rightChild!=null)
+            return true;
+        else
+            return false;
     }
 
     @Override
     public boolean isLeaf() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return (leftChild==null && rightChild==null);
     }
 
     @Override
