@@ -9,10 +9,14 @@ class Book implements IBinaryNode {
 
     //Book class Fields
     private String bookTitle, authorName, authorSurname;
-    private int isbn;
+    int isbn;
 
     //Left Child and Right Child
     Book leftChild, rightChild;
+
+    Book(int bn, String bookTitle, String authorName, String authorSurname) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
         
     //Book class Properties
     public String getBookTitle() {
