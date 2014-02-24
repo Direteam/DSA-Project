@@ -3,13 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package bookshop;
 
 /**
  *
  * @author Kapthura
  */
+import javax.swing.*;
+
 public class Insert extends javax.swing.JFrame {
 
     /**
@@ -57,8 +58,18 @@ public class Insert extends javax.swing.JFrame {
         jLabel1.setText("Book Name");
 
         jButton1.setText("Clear");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Add");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel2.setText("ISBN");
@@ -257,22 +268,75 @@ public class Insert extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-         //kaps-goto insert form
+        //kaps-goto insert form
         new Help().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenu5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu5ActionPerformed
-         //kaps-goto insert form
+        //kaps-goto insert form
         new Help().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenu5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-         //kaps-goto insert form
+        //kaps-goto insert form
         new Main().setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        //Dirteam Admin=kapthura
+        int isbn;
+        String isbns = jTextField2.getText();
+        String bookname = jTextField1.getText();
+        String authorname = jTextField3.getText();
+        String surname = jTextField4.getText();
+
+        if (bookname.equals("")) {
+            JOptionPane.showMessageDialog(null, "Please Enter Book name.");
+            jTextField1.requestFocusInWindow();
+        } else {
+            if (isbns.equals("")) {
+                JOptionPane.showMessageDialog(null, "Please Enter ISBN.");
+                jTextField2.requestFocusInWindow();
+            } else {
+                int length = isbns.length();
+                if (length != 10) {
+                    JOptionPane.showMessageDialog(this, "Enter Correct ISBN Number.");
+                    jTextField1.requestFocusInWindow();
+                    jTextField2.setText("");
+                } else {
+                    try {
+                        isbn = Integer.parseInt(isbns);
+                    } catch (Exception e) {
+                        JOptionPane.showMessageDialog(this, "ISBN Should be Numeric.",
+                                "Wrong input", JOptionPane.ERROR_MESSAGE);
+                        jTextField2.setText("");
+                        return;
+                    }
+                    if (authorname.equals("")) {
+                        JOptionPane.showMessageDialog(null, "Please Enter Author name.");
+                        jTextField3.requestFocusInWindow();
+                    } else {
+                        if (surname.equals("")) {
+                            JOptionPane.showMessageDialog(null, "Please Enter Author surname.");
+                            jTextField4.requestFocusInWindow();
+
+                        }
+                    }
+                }
+            }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        //Dirteam Admin=kapthura
+        jTextField1.setText(null);
+        jTextField2.setText(null);
+        jTextField3.setText(null);
+        jTextField4.setText(null);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
