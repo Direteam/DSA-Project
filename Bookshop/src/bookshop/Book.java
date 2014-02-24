@@ -47,7 +47,7 @@ class Book implements IBinaryNode {
 	this.isbn = isbn;
     }
 
-    //Constructor for the Book Class
+    //Default Constructor for the Book Class
     public Book()
     {
 	bookTitle = authorName = authorSurname = null;
@@ -56,6 +56,7 @@ class Book implements IBinaryNode {
         rightChild = null;
     }
     
+    //Parameterized Constructor for the Book Class
     public Book(String bookTitle,String authorName,String authorSurname,int isbn)
     {
 	this.bookTitle = bookTitle;
@@ -108,10 +109,5 @@ class Book implements IBinaryNode {
     @Override
     public boolean isLeaf() {
         return (leftChild==null && rightChild==null);
-    }
-
-    @Override
-    public boolean isRoot() {
-        return false;
     }
 }

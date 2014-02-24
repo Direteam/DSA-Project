@@ -21,6 +21,4 @@ public interface IBinaryNode
 	public boolean hasRight();
 	//check whether node is a leaf node 
 	public boolean isLeaf();
-	//check whether node is a root node
-	public boolean isRoot();
 }
