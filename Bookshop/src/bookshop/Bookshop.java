@@ -17,5 +17,6 @@ public class Bookshop {
     public static void main(String[] args) {
         
         System.out.println("himal");
+        int x=(int)20;
     }
 }

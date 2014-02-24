@@ -10,41 +10,41 @@ class Book implements IBinaryNode {
     //Book class Fields
     private String bookTitle, authorName, authorSurname;
     private int isbn;
-	
+
     //Left Child and Right Child
     Book leftChild, rightChild;
         
     //Book class Properties
     public String getBookTitle() {
-		return bookTitle;
-	}
+	return bookTitle;
+    }
 	
     public void setBookTitle(String bookTitle) {
-		this.bookTitle = bookTitle;
-	}
+	this.bookTitle = bookTitle;
+    }
 
     public String getAuthorName() {
-		return authorName;
-	}
+	return authorName;
+    }
 
     public void setAuthorName(String authorName) {
-		this.authorName = authorName;
+	this.authorName = authorName;
     }
 
     public String getAuthorSurname() {
-		return authorSurname;
+	return authorSurname;
     }
 
     public void setAuthorSurname(String authorSurname) {
-		this.authorSurname = authorSurname;
+	this.authorSurname = authorSurname;
     }
 
     public int getIsbn() {
-		return isbn;
+	return isbn;
     }
 
     public void setIsbn(int isbn) {
-		this.isbn = isbn;
+	this.isbn = isbn;
     }
 
     //Constructor for the Book Class
@@ -55,7 +55,17 @@ class Book implements IBinaryNode {
         leftChild = null;
         rightChild = null;
     }
-        
+    
+    public Book(String bookTitle,String authorName,String authorSurname,int isbn)
+    {
+	this.bookTitle = bookTitle;
+        this.authorName =authorName;
+        this.authorSurname = authorSurname;
+	this.isbn = isbn;
+        leftChild = null;
+        rightChild = null;
+    }
+    
     @Override
     public Book element() {
         return this;
