@@ -238,7 +238,7 @@ public class BooksTree {
 	        
 	        else {
 	 
-	            Book replacement = getReplacementNode(fBookNode);
+	            Book replacement = getReplacementBook(fBookNode);
 	 
 	          
 	 
