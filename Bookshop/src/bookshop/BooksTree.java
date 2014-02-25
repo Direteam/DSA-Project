@@ -2,108 +2,88 @@
  * @author himal
  */
 package bookshop;
+
 class BooksTree
 {    
-    Book  root = null;
+    Book  rootBook = null;
     
     public void addNode(int isbn, String bookTitle,String authorName,String authorSurname)
     {
-       Book bk=new Book( isbn,  bookTitle , authorName ,  authorSurname);
-       if(root==null)
-          root = bk;
+       Book newBook = new Book(bookTitle,authorName,authorSurname,isbn);
+       if(rootBook == null)
+          rootBook = new Book(newBook);
        else
        {   
-	   Book fBookNode = root;  
-	   Book parent;
-                  
+	   Book fBookNode = rootBook;  
+	   Book parentBook;
            while (true)
            {
-                parent = fBookNode;
-                parent = fBookNode;
+               parentBook = fBookNode;
                if (isbn < fBookNode.isbn)
                {
                     fBookNode = fBookNode.leftChild;    
                     if (fBookNode == null)
                     {
-                         parent.leftChild = bk;
+                         parentBook.leftChild = newBook;
                          return;
                     }
                }
                else
                {
-                       fBookNode = fBookNode.rightChild;
-                       if (fBookNode == null) {
-                           parent.rightChild = bk;
-                            return;
-                       }
-                   }
-             }
-                  }
+                    fBookNode = fBookNode.rightChild;
+                    if (fBookNode == null)
+                    {
+                        parentBook.rightChild = newBook;
+                        return;
+                    }
+               }
+           }
+        }
 	          
-          }
+    }
       
-       public void inOrderTraverseTree(Book fBookNode) {
-	 
-	        if (fBookNode != null) {
-	 
-	           
-	 
-            preorderTraverseTree(fBookNode.leftChild);
- 
-         
- 
-            System.out.println(fBookNode);
-	 
-	          
- 
-	            preorderTraverseTree(fBookNode.rightChild);
-	 
-	        }
+    public void inOrderTraverseTree(Book book)
+    {
+        if (book != null)
+        {
+	    preorderTraverseTree(book.leftChild);
+            System.out.println(book);
+            preorderTraverseTree(book.rightChild);
+        }
+    }
 
-      }
-       
-       
-       
-
-    public void preorderTraverseTree(Book fBookNode) {
-        
-	 
-	        if (fBookNode != null) {
-	 
-	            System.out.println(fBookNode);
-	 
-	            preorderTraverseTree(fBookNode.leftChild);
-	            preorderTraverseTree(fBookNode.rightChild);
-	 	        }
- 	    }
+    public void preorderTraverseTree(Book book)
+    {
+        if (book != null)
+        {
+            System.out.println(book);
+            preorderTraverseTree(book.leftChild);
+            preorderTraverseTree(book.rightChild);
+        }
+    }
     
-    
-      public void postOrderTraverseTree(Book focusNode) {
-	 
-	        if (focusNode != null) {
-	 
-	            preorderTraverseTree(focusNode.leftChild);
-	            preorderTraverseTree(focusNode.rightChild);
-	 
-                      System.out.println(focusNode);
-	 
-	        }
-	 
-	    }
+    public void postOrderTraverseTree(Book book)
+    {	 
+        if (book != null)
+        { 
+            preorderTraverseTree(book.leftChild);
+            preorderTraverseTree(book.rightChild);
+            System.out.println(book);
+	}
+    }
 
-
-  	    public Book findBook(int key) {
+    public Book findBook(int iSBN) {
 	 
 	        // Start at the top of the tree
 	 
-	        Book fBookNode = root;
+	        Book fBookNode = rootBook;
 	 
 	        // While we haven't found the Node        // keep looking	 
-	        while (fBookNode.isbn != key) {
+	        while (fBookNode.isbn != iSBN) {
 	 
 	            // If we should search to the left
 	 
-	            if (key < fBookNode.isbn) {
+	            if (iSBN < fBookNode.isbn) {
 	 
 	                // Shift the focus Node to the left child
 	 
@@ -128,8 +108,8 @@ class BooksTree
 
             
              public boolean Bookremove(int key) {
-                Book fBookNode = root;
-	        Book  parent = root;
+                Book fBookNode = rootBook;
+	        Book  parent = rootBook;
                   boolean isItALeftChild = true;
 	
 	        while (fBookNode.isbn != key) {
@@ -170,8 +150,8 @@ class BooksTree
 	 
 	            // If root delete it
 	 
-	            if (fBookNode == root)
-	                root = null;
+	            if (fBookNode == rootBook)
+	                rootBook = null;
 	 
 	            // If it was marked as a left child
 	            // of the parent delete it in its parent
@@ -190,8 +170,8 @@ class BooksTree
 	 
 	        else if (fBookNode.rightChild == null) {
 	 
-	            if (fBookNode == root)
-	                root = fBookNode.leftChild;
+	            if (fBookNode == rootBook)
+	                rootBook = fBookNode.leftChild;
 	 
 	            
 	 
@@ -207,8 +187,8 @@ class BooksTree
 	 
 	        else if (fBookNode.leftChild == null) {
 	 
-	            if (fBookNode == root)
-	                root = fBookNode.rightChild;
+	            if (fBookNode == rootBook)
+	                rootBook = fBookNode.rightChild;
 	 
 	 	            else if (isItALeftChild)
 	                parent.leftChild = fBookNode.rightChild;
@@ -226,8 +206,8 @@ class BooksTree
 	 
 	          
 	 
-	            if (fBookNode == root)
-	                root = (Book) replacement;
+	            if (fBookNode == rootBook)
+	                rootBook = (Book) replacement;
 	 
 	          
 	 

@@ -12,11 +12,38 @@ class Book implements IBinaryNode {
 
     //Left Child and Right Child
     Book leftChild, rightChild;
-
-    Book(int bn, String bookTitle, String authorName, String authorSurname) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
+    
+    //Default Constructor for the Book Class
+    public Book()
+    {
+	bookTitle = authorName = authorSurname = null;
+	isbn = 0;
+        leftChild = null;
+        rightChild = null;
     }
-        
+    
+    //Parameterized Constructor for the Book Class
+    public Book(String bookTitle,String authorName,String authorSurname,int isbn)
+    {
+	this.bookTitle = bookTitle;
+        this.authorName =authorName;
+        this.authorSurname = authorSurname;
+	this.isbn = isbn;
+        this.leftChild = null;
+        this.rightChild = null;
+    }
+    
+    public Book(Book newBook)
+    {
+	this.bookTitle = newBook.bookTitle;
+        this.authorName = newBook.authorName;
+        this.authorSurname = newBook.authorSurname;
+	this.isbn = newBook.isbn;
+        this.leftChild = newBook.leftChild;
+        this.rightChild = newBook.rightChild;
+    }
+    
     //Book class Properties
     public String getBookTitle() {
 	return bookTitle;
@@ -50,26 +77,6 @@ class Book implements IBinaryNode {
 	this.isbn = isbn;
     }
 
-    //Default Constructor for the Book Class
-    public Book()
-    {
-	bookTitle = authorName = authorSurname = null;
-	isbn = 0;
-        leftChild = null;
-        rightChild = null;
-    }
-    
-    //Parameterized Constructor for the Book Class
-    public Book(String bookTitle,String authorName,String authorSurname,int isbn)
-    {
-	this.bookTitle = bookTitle;
-        this.authorName =authorName;
-        this.authorSurname = authorSurname;
-	this.isbn = isbn;
-        leftChild = null;
-        rightChild = null;
-    }
-    
     @Override
     public Book element() {
         return this;
