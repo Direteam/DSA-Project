@@ -54,7 +54,7 @@ public class Search extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Search Book ");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nmae", "ISBN" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Name", "ISBN" }));
 
         jButton1.setText("Search");
 
