@@ -103,9 +103,8 @@ class BooksTree
 	        }	 
 	        return  fBookNode;
             }
-
-            
-             public boolean Bookremove(int iSBN) {
+ 
+    public boolean Bookremove(int iSBN) {
                 Book fBookNode = rootBook;
 	        Book  parent = rootBook;
                   boolean isItALeftChild = true;
@@ -209,7 +208,7 @@ class BooksTree
                 }
         return replacement;   
     }
-    }
+}
     
 
 
