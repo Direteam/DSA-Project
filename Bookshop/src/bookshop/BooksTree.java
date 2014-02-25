@@ -13,7 +13,7 @@ public class BooksTree
           root = bk;
        else
        {   
-	   Book fBookNode= root;  
+	   Book fBookNode = root;  
 	   Book parent;
                   
            while (true)
@@ -65,7 +65,7 @@ public class BooksTree
        
        
 
-    private void preorderTraverseTree(Book fBookNode) {
+    public void preorderTraverseTree(Book fBookNode) {
         
 	 
 	        if (fBookNode != null) {
