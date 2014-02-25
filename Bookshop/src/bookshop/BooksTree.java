@@ -4,7 +4,7 @@
 package bookshop;
 
 class BooksTree
-{    
+{
     Book  rootBook = null;
     
     public void addNode(int isbn, String bookTitle,String authorName,String authorSurname)
@@ -40,7 +40,7 @@ class BooksTree
            }
         }        
     }
-      
+    
     public void inOrderTraverseTree(Book book)
     {
         if (book != null)
