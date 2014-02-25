@@ -5,7 +5,7 @@
  */
 package bookshop;
 
-public interface IBinaryNode
+interface IBinaryNode
 {
     	//Get element
 	public Book element();

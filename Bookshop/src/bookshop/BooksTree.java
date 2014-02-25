@@ -2,7 +2,7 @@
  * @author himal
  */
 package bookshop;
-public class BooksTree
+class BooksTree
 {    
     Book  root = null;
     

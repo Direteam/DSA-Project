@@ -3,6 +3,6 @@
  */
 package bookshop;
 
-public class DBConnection {
+class DBConnection {
     
 }
