@@ -1,14 +1,8 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package bookshop;
-/**
- *
  * @author Kapthura
  */
+package bookshop;
+
 public class Bookshop {
 
     /**
@@ -16,6 +10,7 @@ public class Bookshop {
      */
     public static void main(String[] args) {
         
-        System.out.println("himal");
+        Main m =new Main();
+        m.setVisible(true);
     }
 }

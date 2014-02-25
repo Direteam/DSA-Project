@@ -1,10 +1,10 @@
-package bookshop;
 /*
  * @author himal
  */
+package bookshop;
 public class BooksTree
 {    
-    Book  root;
+    Book  root = null;
     
     public void addNode(int isbn, String bookTitle,String authorName,String authorSurname)
     {
