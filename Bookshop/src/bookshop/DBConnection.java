@@ -11,7 +11,7 @@ class DBConnection
     public static Connection connection;
     public Statement stm;
 
-    public void InitiateDB()
+    public DBConnection()
     {
         try
         {
@@ -25,10 +25,9 @@ class DBConnection
             System.out.println("Error: DB Initiae failed!");
         }
     }
-
+    
     public void ConnectDB(String query)
     {
-        InitiateDB();
         try
         {
             stm = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
@@ -38,7 +37,7 @@ class DBConnection
             System.out.println("Error: DB Connection failed!");
         }
     }
-
+    
     public void closedDB()
     {
         try 
