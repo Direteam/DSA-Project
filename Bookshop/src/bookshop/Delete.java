@@ -55,7 +55,7 @@ public class Delete extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jLabel1.setText("Delete by");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Nmae", "ISBN" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Name", "ISBN" }));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel5.setText("Delete Book ");
