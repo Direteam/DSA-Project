@@ -3,13 +3,13 @@
  */
 package bookshop;
 
- import java.sql.*;
+import java.sql.*;
 import java.sql.Connection;
 
 class DBConnection
 {
     public static Connection connection;
-    Statement stm;
+    public Statement stm;
 
     public void InitiateDB()
     {
@@ -24,7 +24,6 @@ class DBConnection
         {
             System.out.println("Error: DB Initiae failed!");
         }
-
     }
 
     public void ConnectDB(String query)
@@ -33,7 +32,6 @@ class DBConnection
         try
         {
             stm = connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
-            stm.executeQuery(query);
         }
         catch (Exception ex)
         {
@@ -51,6 +49,5 @@ class DBConnection
         {
             System.out.println("Error: DB Close failed!");
         }
-
     }
 }
