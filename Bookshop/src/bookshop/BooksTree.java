@@ -38,8 +38,7 @@ class BooksTree
                     }
                }
            }
-        }
-	          
+        }        
     }
       
     public void inOrderTraverseTree(Book book)
@@ -72,11 +71,10 @@ class BooksTree
 	}
     }
 
-    public Book findBook(int iSBN) {
-	 
+    public Book findBook(int iSBN)
+    {
 	        // Start at the top of the tree
-	 
-	        Book fBookNode = rootBook;
+        Book fBookNode = rootBook;
 	 
 	        // While we haven't found the Node        // keep looking	 
 	        while (fBookNode.isbn != iSBN) {
@@ -146,118 +144,71 @@ class BooksTree
 	        }
 	 
 	        // If Node doesn't have children delete it
-	 	        if (fBookNode.leftChild == null && fBookNode.rightChild == null) {
-	 
+	 	        if (fBookNode.leftChild == null && fBookNode.rightChild == null)
+                        {
 	            // If root delete it
-	 
 	            if (fBookNode == rootBook)
 	                rootBook = null;
-	 
 	            // If it was marked as a left child
 	            // of the parent delete it in its parent
-	 
 	            else if (isItALeftChild)
 	                parent.leftChild = null;
-	 
 	            // Vice versa for the right child
-	 
 	            else
 	                parent.rightChild = null;
-	 
 	        }
-	 
 	        // If no right child
-	 
-	        else if (fBookNode.rightChild == null) {
-	 
+	        else if (fBookNode.rightChild == null)
+                { 
 	            if (fBookNode == rootBook)
 	                rootBook = fBookNode.leftChild;
-	 
-	            
-	 
 	            else if (isItALeftChild)
 	                parent.leftChild = fBookNode.leftChild;
 	 	            
 	            else
 	                parent.rightChild = fBookNode.leftChild;
-	 
 	        }
-	 
 	        // If no left child
-	 
-	        else if (fBookNode.leftChild == null) {
-	 
+	        else if (fBookNode.leftChild == null)
+                {
 	            if (fBookNode == rootBook)
 	                rootBook = fBookNode.rightChild;
-	 
-	 	            else if (isItALeftChild)
+	 	    else if (isItALeftChild)
 	                parent.leftChild = fBookNode.rightChild;
-	 
-	           
-                 else
+                    else
 	                parent.rightChild = fBookNode.rightChild;
-	 
 	        }
-	 
-	        
-	        else {
-	 
+	        else
+                {
 	            Book replacement = getReplacementBook(fBookNode);
-	 
-	          
-	 
 	            if (fBookNode == rootBook)
 	                rootBook = (Book) replacement;
-	 
-	          
-	 
 	            else if (isItALeftChild)
 	                parent.leftChild = (Book) replacement;
-	 
-	            
 	            else
 	                parent.rightChild = (Book) replacement;
-	 
 	            replacement.leftChild = fBookNode.leftChild;
-	 
-	        }	 
-
-
-             return false;
+                }
+        return false;
+    }
              
-             }
-
-    private Book getReplacementBook(Book replacedNode) {
-        
+    private Book getReplacementBook(Book replacedNode)
+    {
          Book replacementParent = replacedNode;
 	        Book replacement = replacedNode;
-	 
 	        Book focusNode = replacedNode.rightChild;
-	 
-	      
-	        while (focusNode != null) {
-	 	            replacementParent = replacement;
-	 
+	        while (focusNode != null)
+                {
+	 	    replacementParent = replacement;
 	            replacement = focusNode;
-	 
 	            focusNode = focusNode.leftChild;
-	 
-	        }
-	 
- 
+	        } 
 	        if (replacement != replacedNode.rightChild) {
-	 
 	            replacementParent.leftChild = replacement.rightChild;
 	            replacement.rightChild = replacedNode.rightChild;
-	 	 
-	      
                 }
-        return replacement;
-        
-        
+        return replacement;   
     }
-        
-
     }
     
 
