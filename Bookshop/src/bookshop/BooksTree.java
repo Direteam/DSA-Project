@@ -12,41 +12,35 @@ import javax.xml.soap.Node;
  *
  * @author himal
  */
-public class BooksTree {
-    
+public class BooksTree
+{    
     Book  root;
     
-      public void addNode(int isbn, String bookTitle,String authorName,String authorSurname) {
-          Book bk=new Book( isbn,  bookTitle , authorName ,  authorSurname);
-          if(root==null)
-          {
-              root = bk;
-          } else {
-	 
-	          
-	        Book fBookNode= root;
-                
-	          
-	          Book parent;
+    public void addNode(int isbn, String bookTitle,String authorName,String authorSurname)
+    {
+       Book bk=new Book( isbn,  bookTitle , authorName ,  authorSurname);
+       if(root==null)
+          root = bk;
+       else
+       {   
+	   Book fBookNode= root;  
+	   Book parent;
                   
-                  while (true) {
-                      
-                      
-                       parent = fBookNode;
-                  
-                 
-                   
-                   if (isbn < fBookNode.isbn) {
-                       
-                        fBookNode = fBookNode.leftChild;
-                        
-                           if (fBookNode == null) {
-                               
-                                 parent.leftChild = bk;
-                                   return;
-                           }
-                   }
-                   else {
+           while (true)
+           {
+                parent = fBookNode;
+                parent = fBookNode;
+               if (isbn < fBookNode.isbn)
+               {
+                    fBookNode = fBookNode.leftChild;    
+                    if (fBookNode == null)
+                    {
+                         parent.leftChild = bk;
+                         return;
+                    }
+               }
+               else
+               {
                        fBookNode = fBookNode.rightChild;
                        if (fBookNode == null) {
                            parent.rightChild = bk;
