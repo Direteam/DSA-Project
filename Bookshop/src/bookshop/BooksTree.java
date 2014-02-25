@@ -263,7 +263,7 @@ public class BooksTree {
              
              }
 
-    private Book getReplacementNode(Book replacedNode) {
+    private Book getReplacementBook(Book replacedNode) {
         
          Book replacementParent = replacedNode;
 	        Book replacement = replacedNode;
@@ -286,9 +286,10 @@ public class BooksTree {
 	            replacementParent.leftChild = replacement.rightChild;
 	            replacement.rightChild = replacedNode.rightChild;
 	 	 
-	        return replacement;
+	      
                 }
-        return null;
+        return replacement;
+        
         
     }
         
