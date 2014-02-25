@@ -9,10 +9,8 @@ class Book implements IBinaryNode {
     //Book class Fields
     private String bookTitle, authorName, authorSurname;
     int isbn;
-
     //Left Child and Right Child
     Book leftChild, rightChild;
-    
     
     //Default Constructor for the Book Class
     public Book()
@@ -23,7 +21,7 @@ class Book implements IBinaryNode {
         rightChild = null;
     }
     
-    //Parameterized Constructor for the Book Class
+    //Parameterized Constructors for the Book Class
     public Book(String bookTitle,String authorName,String authorSurname,int isbn)
     {
 	this.bookTitle = bookTitle;

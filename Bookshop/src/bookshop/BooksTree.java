@@ -105,18 +105,18 @@ class BooksTree
             }
 
             
-             public boolean Bookremove(int key) {
+             public boolean Bookremove(int iSBN) {
                 Book fBookNode = rootBook;
 	        Book  parent = rootBook;
                   boolean isItALeftChild = true;
 	
-	        while (fBookNode.isbn != key) {
+	        while (fBookNode.isbn != iSBN) {
 	 
 	            parent = fBookNode;
 	 
 	            // If we should search to the left
 	 
-	            if (key < fBookNode.isbn) {
+	            if (iSBN < fBookNode.isbn) {
 	 
 	                isItALeftChild = true;
 	 
