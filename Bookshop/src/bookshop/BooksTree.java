@@ -2,35 +2,73 @@
  * @author himal
  */
 package bookshop;
-
+import java.sql.*;
+import javax.swing.JOptionPane;
 class BooksTree {
 
     Book rootBook = null;
 
-    public void addNode(int isbn, String bookTitle, String authorName, String authorSurname) {
+    public void addNode(int isbn, String bookTitle, String authorName, String authorSurname)
+    {
+        if(findBook(isbn)== null)
+        {
+        boolean inserted = false;
         Book newBook = new Book(bookTitle, authorName, authorSurname, isbn);
-        if (rootBook == null) {
+        if (rootBook == null)
+        {
             rootBook = new Book(newBook);
-        } else {
+            inserted = true;
+        }
+        else
+        {
             Book fBookNode = rootBook;
             Book parentBook;
-            while (true) {
+            while (true)
+            {
                 parentBook = fBookNode;
-                if (isbn < fBookNode.isbn) {
+                if (isbn < fBookNode.isbn)
+                {
                     fBookNode = fBookNode.leftChild;
-                    if (fBookNode == null) {
+                    if (fBookNode == null)
+                    {
                         parentBook.leftChild = newBook;
-                        return;
+                        inserted = true;
+                        break;
                     }
-                } else {
+                }
+                else
+                {
                     fBookNode = fBookNode.rightChild;
-                    if (fBookNode == null) {
+                    if (fBookNode == null)
+                    {
                         parentBook.rightChild = newBook;
-                        return;
+                        inserted = true;
+                        break;
                     }
                 }
             }
+            if(inserted)
+            {
+                try
+                {
+                    DBConnection con = new DBConnection();
+                    con.stm = DBConnection.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_UPDATABLE);
+                    if(con.stm.executeUpdate("INSERT INTO book_details VALUES('"+bookTitle+"','"+authorName+"','"+authorSurname+"',"+isbn+")")!=0)
+                        JOptionPane.showMessageDialog(null, "Sucessfully Inserted");
+                    else
+                        JOptionPane.showMessageDialog(null, "Unable to Save");    
+                }
+                catch(SQLException ex)
+                {
+                    JOptionPane.showMessageDialog(null, "Unable to Save");
+                }
+            }
+            else
+                JOptionPane.showMessageDialog(null, "Unable to Save");    
+            }
         }
+        else
+            JOptionPane.showMessageDialog(null, "Allready Inserted"); 
     }
 
     public void inOrderTraverseTree(Book book) {
@@ -59,38 +97,31 @@ class BooksTree {
 
     public Book findBook(int iSBN) {
         // Start at the top of the tree
-        Book fBookNode = rootBook;
+        Book book = rootBook;
 
         // While we haven't found the Node        // keep looking	 
-        while (fBookNode.isbn != iSBN) {
+        while (book.isbn != iSBN) {
 
             // If we should search to the left
 
-            if (iSBN < fBookNode.isbn) {
-
+            if (iSBN < book.isbn) 
+            {
                 // Shift the focus Node to the left child
-
-                fBookNode = fBookNode.leftChild;
-
-            } else {
-
+                book = book.leftChild;
+            } else 
+            {
                 // Shift the focus Node to the right child
-
-                fBookNode = fBookNode.rightChild;
-
+                book = book.rightChild;
             }
-
             // The node wasn't found
-
-            if (fBookNode == null) {
+            if (book == null) {
                 return null;
             }
-
         }
-        return fBookNode;
+        return book;
     }
 
-    public boolean Bookremove(int iSBN) {
+    public boolean bookRemove(int iSBN) {
         Book fBookNode = rootBook;
         Book parent = rootBook;
         boolean isItALeftChild = true;

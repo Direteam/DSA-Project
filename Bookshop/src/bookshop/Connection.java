@@ -18,9 +18,6 @@ class Connection
     
    public void connect(JTable myTable) throws ClassNotFoundException, SQLException
    {
-        Class.forName("com.mysql.jdbc.Driver");
-        java.sql.Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bookshop", "root", ""); 
-        Statement stm=  connection.createStatement();
         ResultSet resultSet = stm.executeQuery("SELECT * FROM book_details");
         java.sql.ResultSetMetaData rstmt=  resultSet.getMetaData();
         int Colums = rstmt.getColumnCount();

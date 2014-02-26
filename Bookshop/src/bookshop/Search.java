@@ -7,8 +7,11 @@
 package bookshop;
 
 import java.sql.SQLException;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -68,6 +71,11 @@ public class Search extends javax.swing.JFrame {
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Name", "ISBN" }));
 
         jButton1.setText("Search");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Clear");
 
@@ -270,6 +278,33 @@ public class Search extends javax.swing.JFrame {
             Logger.getLogger(Search.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formWindowOpened
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try
+        {
+            int isbn = Integer.parseInt(jTextField1.getText());
+            Book book = CommonBTree.bookTree.findBook(isbn);
+            if(book==null)
+                JOptionPane.showMessageDialog(null, "Unable to find the book");
+            else
+            {
+                //
+                DefaultTableModel dtb = new DefaultTableModel();
+                Vector Colums_num = new Vector();
+                Colums_num.addElement(book.getBookTitle());
+                Colums_num.addElement(book.getAuthorName());
+                Colums_num.addElement(book.getAuthorSurname());
+                Colums_num.addElement(book.getIsbn());
+                dtb.setColumnIdentifiers(Colums_num);
+                jTable1.setModel(dtb);
+                //
+            }
+        }
+        catch(Exception ex)
+        {
+             JOptionPane.showMessageDialog(null, "Invalid ISBN no");
+        }       
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

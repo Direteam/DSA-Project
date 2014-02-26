@@ -287,13 +287,14 @@ public class Insert extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         //Dirteam Admin=kapthura
-        int isbn;
+        Book book = new Book();
+        //int isbn;
         String isbns = jTextField2.getText();
-        String bookname = jTextField1.getText();
-        String authorname = jTextField3.getText();
-        String surname = jTextField4.getText();
+        book.setBookTitle(jTextField1.getText());
+        book.setAuthorName(jTextField3.getText());
+        book.setAuthorSurname(jTextField4.getText());
 
-        if (bookname.equals("")) {
+        if (book.getBookTitle().equals("")) {
             JOptionPane.showMessageDialog(null, "Please Enter Book name.");
             jTextField1.requestFocusInWindow();
         } else {
@@ -301,29 +302,37 @@ public class Insert extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Please Enter ISBN.");
                 jTextField2.requestFocusInWindow();
             } else {
-                int length = isbns.length();
-                if (length != 10) {
+                if (isbns.length()!= 10) {
                     JOptionPane.showMessageDialog(this, "Enter Correct ISBN Number.");
                     jTextField1.requestFocusInWindow();
                     jTextField2.setText("");
-                } else {
-                    try {
-                        isbn = Integer.parseInt(isbns);
-                    } catch (Exception e) {
-                        JOptionPane.showMessageDialog(this, "ISBN Should be Numeric.",
-                                "Wrong input", JOptionPane.ERROR_MESSAGE);
-                        jTextField2.setText("");
-                        return;
-                    }
-                    if (authorname.equals("")) {
-                        JOptionPane.showMessageDialog(null, "Please Enter Author name.");
-                        jTextField3.requestFocusInWindow();
-                    } else {
-                        if (surname.equals("")) {
-                            JOptionPane.showMessageDialog(null, "Please Enter Author surname.");
-                            jTextField4.requestFocusInWindow();
-
+                } else
+                {
+                    try
+                    {
+                        book.setIsbn(Integer.parseInt(isbns));
+                        if (book.getAuthorName().equals(""))
+                        {
+                            JOptionPane.showMessageDialog(null, "Please Enter Author name.");
+                            jTextField3.requestFocusInWindow();
                         }
+                        else
+                        {
+                            if (book.getAuthorSurname().equals(""))
+                            {
+                                JOptionPane.showMessageDialog(null, "Please Enter Author surname.");
+                                jTextField4.requestFocusInWindow();
+                            }
+                            else
+                            {
+                                CommonBTree.bookTree.addNode(book.getIsbn(), book.getBookTitle(), book.getAuthorName(), book.getAuthorSurname());
+                            }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        JOptionPane.showMessageDialog(this, "ISBN Should be Numeric.","Wrong input", JOptionPane.ERROR_MESSAGE);
+                        jTextField2.setText("");
                     }
                 }
             }
