@@ -14,5 +14,10 @@ public class CommonBTree {
 public static BooksTree bookTree = new BooksTree();
    
    public static void refreshCommonBTree()
-   {}    
+   {
+       DBConnection con=new DBConnection();
+       //con.stm = DBConnection.connection.Pre
+       Book b = new Book();
+       //bookTree.addNode(isbn, null, null, null);
+   }
 }
